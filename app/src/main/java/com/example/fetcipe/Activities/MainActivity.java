@@ -1,8 +1,10 @@
-package com.example.fetcipe;
+package com.example.fetcipe.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.fetcipe.R;
 
 public class MainActivity extends AppCompatActivity {
 
