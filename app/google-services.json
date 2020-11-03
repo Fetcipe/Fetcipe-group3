@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "811182684936",
+    "firebase_url": "https://fetcipe-2000.firebaseio.com",
+    "project_id": "fetcipe-2000",
+    "storage_bucket": "fetcipe-2000.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811182684936:android:c5abe9d313d615d5ad8abd",
+        "android_client_info": {
+          "package_name": "com.example.fetcipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "811182684936-cpvfh1o10r24q65vm8gkv05scdak9tgk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXXl_UngyBEEIYl5PcofR_d3Y7Sao6VhQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "811182684936-cpvfh1o10r24q65vm8gkv05scdak9tgk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
