@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="Activities.RegisterActivity">
 
     <ImageView
         android:id="@+id/regUserPhoto"
@@ -26,6 +26,7 @@
 
     <EditText
         android:id="@+id/regName"
+        android:background="@drawable/reg_edittext_style"
         android:layout_width="265dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -38,6 +39,7 @@
 
     <EditText
         android:id="@+id/regMail"
+        android:background="@drawable/reg_edittext_style"
         android:layout_width="265dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -49,6 +51,7 @@
 
     <EditText
         android:id="@+id/regPassword"
+        android:background="@drawable/reg_edittext_style"
         android:layout_width="265dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -61,6 +64,7 @@
 
     <EditText
         android:id="@+id/regPassword2"
+        android:background="@drawable/reg_edittext_style"
         android:layout_width="265dp"
         android:layout_height="wrap_content"
         android:ems="10"
