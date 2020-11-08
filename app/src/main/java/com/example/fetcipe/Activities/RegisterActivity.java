@@ -22,10 +22,15 @@ import android.widget.Toast;
 
 import com.example.fetcipe.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -60,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 regBtn.setVisibility(View.INVISIBLE);
-                loadingProgress.setVisibility(View.INVISIBLE);
+                loadingProgress.setVisibility(View.VISIBLE);
                 final String email = userEmail.getText().toString();
                 final String password = userPassword.getText().toString();
                 final String password2 = userPassword2.getText().toString();
@@ -129,12 +134,54 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     //update user photo and name
-    private void updateUserInfo(String name, Uri pickedImgUri, FirebaseUser currentUser) {
+    private void updateUserInfo(final String name, Uri pickedImgUri, final FirebaseUser currentUser) {
 
         //first we need to upload user photo to firebase storage
         //and get uri
 
+        StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("user_photos");
+        final StorageReference imageFilePath = mStorage.child(pickedImgUri.getLastPathSegment());
+        imageFilePath.putFile(pickedImgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
+                //image uploaded successfully
+                //now we can get image url
+
+                imageFilePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+
+                        //uri contain user image url
+
+                        UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(name).setPhotoUri(uri).build();
+
+                        currentUser.updateProfile(profileUpdate)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                        if (task.isSuccessful()) {
+                                            //user info updated successfully
+                                            showMessage("Register Completed");
+                                            updateUI();
+                                        }
+                                    }
+                                });
+                    }
+                });
+            }
+        });
+
+
+    }
+
+    private void updateUI() {
+
+        Intent homeActivity = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(homeActivity);
+        finish();
     }
 
     private void showMessage(String message) {
