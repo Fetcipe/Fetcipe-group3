@@ -1,7 +1,5 @@
 package com.example.fetcipe.requests;
 
-import androidx.constraintlayout.solver.state.State;
-
 import com.example.fetcipe.util.Constants;
 
 import retrofit2.Retrofit;

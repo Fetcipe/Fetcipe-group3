@@ -6,48 +6,34 @@ import android.os.Parcelable;
 import java.util.Arrays;
 
 public class Recipe implements Parcelable {
-    private  String title;
-    private int id;
-    private String sourceName;
-    private String[] extendedIngredients;
-    private int aggregateLikes;
-    private boolean vegetarian;
-    private float spoonacularScore;
-    private String image;
-    private float calories;
 
+    private String title;
+    private String publisher;
+    private String[] ingredients;
+    private String recipe_id;
+    private String image_url;
+    private float social_rank;
 
-
-    public Recipe(String title, int id, String sourceName,
-                  String[] extendedIngredients, int aggregateLikes,
-                  boolean vegetarian, float spoonacularScore,
-                  String image, float calories) {
+    public Recipe(String title, String publisher, String[] ingredients, String recipe_id,
+                  String image_url, float social_rank) {
         this.title = title;
-        this.id = id;
-        this.sourceName = sourceName;
-        this.extendedIngredients = extendedIngredients;
-        this.aggregateLikes = aggregateLikes;
-        this.vegetarian = vegetarian;
-        this.spoonacularScore = spoonacularScore;
-        this.image = image;
-        this.calories = calories;
-
+        this.publisher = publisher;
+        this.ingredients = ingredients;
+        this.recipe_id = recipe_id;
+        this.image_url = image_url;
+        this.social_rank = social_rank;
     }
-
 
     public Recipe() {
     }
 
     protected Recipe(Parcel in) {
         title = in.readString();
-        id = in.readInt();
-        sourceName = in.readString();
-        extendedIngredients = in.createStringArray();
-        aggregateLikes = in.readInt();
-        vegetarian = in.readByte() != 0;
-        spoonacularScore = in.readFloat();
-        image = in.readString();
-        calories = in.readFloat();
+        publisher = in.readString();
+        ingredients = in.createStringArray();
+        recipe_id = in.readString();
+        image_url = in.readString();
+        social_rank = in.readFloat();
     }
 
     public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
@@ -70,82 +56,55 @@ public class Recipe implements Parcelable {
         this.title = title;
     }
 
-    public int getId() {
-        return id;
+    public String getPublisher() {
+        return publisher;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
-    public String getSourceName() {
-        return sourceName;
+    public String[] getIngredients() {
+        return ingredients;
     }
 
-    public void setSourceName(String sourceName) {
-        this.sourceName = sourceName;
+    public void setIngredients(String[] ingredients) {
+        this.ingredients = ingredients;
     }
 
-    public String[] getExtendedIngredients() {
-        return extendedIngredients;
+    public String getRecipe_id() {
+        return recipe_id;
     }
 
-    public void setExtendedIngredients(String[] extendedIngredients) {
-        this.extendedIngredients = extendedIngredients;
+    public void setRecipe_id(String recipe_id) {
+        this.recipe_id = recipe_id;
     }
 
-    public int getAggregateLikes() {
-        return aggregateLikes;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public void setAggregateLikes(int aggregateLikes) {
-        this.aggregateLikes = aggregateLikes;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
-    public boolean isVegetarian() {
-        return vegetarian;
+    public float getSocial_rank() {
+        return social_rank;
     }
 
-    public void setVegetarian(boolean vegetarian) {
-        this.vegetarian = vegetarian;
-    }
-
-    public float getSpoonacularScore() {
-        return spoonacularScore;
-    }
-
-    public void setSpoonacularScore(float spoonacularScore) {
-        this.spoonacularScore = spoonacularScore;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public float getCalories() {
-        return calories;
-    }
-
-    public void setCalories(float calories) {
-        this.calories = calories;
+    public void setSocial_rank(float social_rank) {
+        this.social_rank = social_rank;
     }
 
     @Override
     public String toString() {
         return "Recipe{" +
                 "title='" + title + '\'' +
-                ", id=" + id +
-                ", sourceName='" + sourceName + '\'' +
-                ", extendedIngredients=" + Arrays.toString(extendedIngredients) +
-                ", aggregateLikes=" + aggregateLikes +
-                ", vegetarian=" + vegetarian +
-                ", spoonacularScore=" + spoonacularScore +
-                ", image='" + image + '\'' +
-                ", calories=" + calories +
+                ", publisher='" + publisher + '\'' +
+                ", ingredients=" + Arrays.toString(ingredients) +
+                ", recipe_id='" + recipe_id + '\'' +
+                ", image_url='" + image_url + '\'' +
+                ", social_rank=" + social_rank +
                 '}';
     }
 
@@ -155,15 +114,26 @@ public class Recipe implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(title);
-        parcel.writeInt(id);
-        parcel.writeString(sourceName);
-        parcel.writeStringArray(extendedIngredients);
-        parcel.writeInt(aggregateLikes);
-        parcel.writeByte((byte) (vegetarian ? 1 : 0));
-        parcel.writeFloat(spoonacularScore);
-        parcel.writeString(image);
-        parcel.writeFloat(calories);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(publisher);
+        dest.writeStringArray(ingredients);
+        dest.writeString(recipe_id);
+        dest.writeString(image_url);
+        dest.writeFloat(social_rank);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
