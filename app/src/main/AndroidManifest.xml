@@ -12,17 +12,14 @@
         <activity android:name=".Activities.RegisterActivity">
 
         </activity>
-        <activity android:name=".Activities.LoginActivity"></activity>
-        <activity android:name=".Activities.HomeActivity">
-
+        <activity android:name=".Activities.LoginActivity">
             <Intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </Intent-filter>
-
-
         </activity>
+        <activity android:name=".Activities.HomeActivity"></activity>
     </application>
 
 </manifest>
